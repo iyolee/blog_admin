@@ -1,0 +1,14 @@
+{
+  "presets": ["es2015", "stage-0", "es2017", "react"],
+  "plugins": [
+    ["transform-decorators-legacy"],
+    //["import", { "libraryName": "antd", "style": true }],
+    [ "transform-runtime" ]
+  ],
+  // "env": {
+  //   "build": {
+  //     "optional": ["optimisation", "minification"]
+  //   },
+  //   "modules": false
+  // }
+}
