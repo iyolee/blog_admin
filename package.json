@@ -4,7 +4,11 @@
   "description": "My Blog Admin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --optimize-minimize",
+    "dev": "webpack-dev-server --config webpack.dev.config.js",
+    "start": "npm run dev",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
