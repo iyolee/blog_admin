@@ -57,7 +57,7 @@ config.devServer = {
     // 不监听的文件或文件夹
     ignored: /node_modules/,
     // 监听到变化后等300ms再执行
-    aggregateTimeout: 300,
+    // aggregateTimeout: 300,
     // 每秒询问1000次指定的文件有没有变化
     poll: 1000
   }

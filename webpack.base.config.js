@@ -8,7 +8,7 @@ const SRC_PATH = path.resolve(__dirname, 'src')
 // 打包后的资源根目录（本地物理文件路径）
 const ASSETS_BUILD_PATH = path.resolve(__dirname, 'build')
 // 资源根目录（可以是 CDN 上的绝对路径，或相对路径）
-const ASSETS_PUBLIC_PATH = '/assets/'
+// const ASSETS_PUBLIC_PATH = '/assets/'
 
 module.exports = {
   // 设置源代码的默认根路径

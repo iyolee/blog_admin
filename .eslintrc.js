@@ -15,11 +15,11 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  // "parser": "babel-eslint",
+  "parser": "babel-eslint",
   plugins: ['react'],
   rules: {
-    indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
+    indent: ['error', 2, {"SwitchCase": 1}],
+    // 'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     "react/jsx-uses-react": "error",
