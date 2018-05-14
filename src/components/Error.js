@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div `
+const Wrapper = styled.div`
   position: fixed;
   left:0;
   top:0;
@@ -11,7 +11,7 @@ const Wrapper = styled.div `
   background-color: #f0f2f5;
 `
 
-const Image = styled.img `
+const Image = styled.img`
   display: block;
   margin: 0 auto;
   margin-top: 20px;
@@ -26,9 +26,11 @@ const Title = styled.h2`
   margin-top: 50px;
 `
 
-export default ({history}) => (
+const Error = ({history}) => (
   <Wrapper>
     <Title>OOPS!</Title>
-    <Image src="../static/404.png" alt="404" />
-  </Wrapper> 
+    <Image src='../static/404.png' alt='404' />
+  </Wrapper>
 )
+
+export default Error

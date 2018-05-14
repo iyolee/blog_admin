@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router'
 
@@ -6,7 +6,7 @@ import * as loginAction from '../actions/loginAction'
 import fetchData from '../utils/fetch'
 import Login from '../components/Login'
 
-class AuthorizedRoute extends Component {
+class AuthorizedRoute extends PureComponent {
   constructor(props) {
     super(props)
   }

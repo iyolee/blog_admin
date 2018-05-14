@@ -8,3 +8,4 @@ webpack.dev.config.js
 server.js
 test/
 ./routes/index.js
+static/**

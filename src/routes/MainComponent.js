@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {Route} from 'react-router-dom'
 import {Switch} from 'react-router'
 
@@ -40,7 +40,7 @@ const renderRouteComponent = (routes, {location: {pathname}}) => routes.map(rout
     : RouteComponent(route)
 })
 
-class MainComponent extends Component {
+class MainComponent extends PureComponent {
 
   render() {
     return (

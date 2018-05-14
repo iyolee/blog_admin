@@ -11,7 +11,7 @@ const allRoutes = [
   }, {
     path: '/admin',
     auth: true,
-    component: lazyLoader(() => import ('../components/Index.js')),
+    component: lazyLoader(() => import ('../components/markdown/MarkdownEditor.js')),
     // children: []
   }, {
     path: '/404',

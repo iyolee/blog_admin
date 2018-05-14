@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import * as loginAction from '../actions/loginAction'
+
+// if (process.env.NODE_ENV !== 'production') {
+//   const {whyDidYouUpdate} = require('why-did-you-update')
+//   whyDidYouUpdate(React)
+// }
 
 const Wrapper = styled.div`
   width: 100%;
@@ -63,6 +69,14 @@ const Button = styled.button`
 `
 
 class Login extends Component {
+  static propTypes = {
+    error: PropTypes.bool,
+    message: PropTypes.string,
+    onLogin: PropTypes.func,
+    isLoggedIn: PropTypes.bool,
+    history: PropTypes.any
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -96,7 +110,7 @@ class Login extends Component {
     })
   }
 
-  hanleSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault()
     if (this.state.username === '' || this.state.password === '') {
       this.setState({
@@ -127,7 +141,7 @@ class Login extends Component {
           {this.state.warning && (
             <span className="login-warning">{this.state.warning}</span>
           )}
-          <form onSubmit={this.hanleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="">用户：</label>
               <Input

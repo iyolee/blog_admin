@@ -13,10 +13,10 @@ const config = require('./webpack.base.config')
 // }
 
 // 输出文件的性能检查配置
-config.performance = {
-  // 有性能问题时输出警告
-  hints: 'warning'
-}
+// config.performance = {
+//   // 有性能问题时输出警告
+//   hints: 'warning'
+// }
 
 // 包含有用的文件路径信息到生成的代码里
 config.output.pathinfo = true

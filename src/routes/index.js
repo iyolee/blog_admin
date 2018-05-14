@@ -6,7 +6,7 @@ import MainComponent from './MainComponent'
 const Routes = () => (
   <Router>
     <div>
-      <Route path='/' component={MainComponent}/>
+      <Route path='/' component={MainComponent} />
     </div>
   </Router>
 )
