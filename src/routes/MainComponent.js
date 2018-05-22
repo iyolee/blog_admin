@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import PropTypes from 'prop-types'
 import {Route} from 'react-router-dom'
 import {Switch} from 'react-router'
 
@@ -11,12 +12,15 @@ const RouteComponent = route => route.auth
     key={route.path}
     exact={route.exact || false}
     path={route.path}
-    component={route.component}/>)
-  : (<Route
+    component={route.component}
+    redirect={route.redirect || null}
+  />)
+  : <Route
     key={route.path}
     exact={route.exact || false}
     path={route.path}
-    component={route.component}/>)
+    component={route.component}
+  />
 
 // 404判断
 const isExistPath = (routes, pathname) => routes.some(route => {
@@ -31,7 +35,7 @@ const isExistPath = (routes, pathname) => routes.some(route => {
 
 const renderRouteComponent = (routes, {location: {pathname}}) => routes.map(route => {
   if (!isExistPath(allRoutes, pathname)) {
-    return <Error/>
+    return <Error />
   }
   return route.children
     ? route
@@ -40,13 +44,44 @@ const renderRouteComponent = (routes, {location: {pathname}}) => routes.map(rout
     : RouteComponent(route)
 })
 
-class MainComponent extends PureComponent {
+const renderByLayout = (routes, {location: {pathname}}) => routes.map(route => {
+  return pathname === route.path && route.layouts ? <route.layouts key={route.path} /> : null
+})
 
+const getRoute = (routes, pathname) => {
+  const fn = routes => routes.map(route => {
+    if (route.path === pathname) {
+      return route
+    }
+    if (route.children) {
+      return fn(route.children).find(v => v)
+    }
+  })
+  return fn(routes).find(route => route)
+}
+
+class MainComponent extends PureComponent {
+  static propTypes = {
+    location: PropTypes.any
+  }
+  componentDidMount() {
+    const {location: {pathname}} = this.props
+    const currRoute = getRoute(allRoutes, pathname)
+    // 改变title
+    if (currRoute && currRoute.name) {
+      document.title = currRoute.name
+    } else if (!currRoute) {
+      document.title = '404'
+    }
+  }
   render() {
     return (
-      <Switch>
-        {renderRouteComponent(allRoutes, this.props)}
-      </Switch>
+      <div>
+        {renderByLayout(allRoutes, this.props)}
+        <Switch>
+          {renderRouteComponent(allRoutes, this.props)}
+        </Switch>
+      </div>
     )
   }
 }

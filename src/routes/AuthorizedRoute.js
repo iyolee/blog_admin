@@ -1,12 +1,22 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router'
+import PropTypes from 'prop-types'
 
 import * as loginAction from '../actions/loginAction'
 import fetchData from '../utils/fetch'
-import Login from '../components/Login'
 
 class AuthorizedRoute extends PureComponent {
+
+  static propTypes = {
+    onLoginIn: PropTypes.func,
+    token: PropTypes.string,
+    history: PropTypes.any,
+    component: PropTypes.any,
+    redirect: PropTypes.any,
+    isLoggedIn: PropTypes.bool
+  }
+
   constructor(props) {
     super(props)
   }
@@ -38,13 +48,14 @@ class AuthorizedRoute extends PureComponent {
   }
 
   render() {
-    const { component: Component,  isLoggedIn, ...rest } = this.props
+    const { component: Component, redirect: RedirectComponent, isLoggedIn, ...rest } = this.props
     return (
       <Route {...rest} render={() => {
         return isLoggedIn
           ? <Component {...this.props} />
-          : <Login />
-      }} />
+          : <RedirectComponent />
+      }}
+      />
     )
   }
 }

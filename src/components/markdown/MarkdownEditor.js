@@ -4,12 +4,13 @@ import ReactMarkdown from 'react-markdown'
 import CodeBlock from './CodeBlock'
 
 const Wrapper = styled.div`
-overflow: auto;
-margin: 0 !important;
-padding: 0 !important;
-background: #FCFAF2;
-min-height: 100%;
-/* overflow: auto; */
+  overflow: auto;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #FCFAF2;
+  min-height: 100%;
+  /* overflow: auto; */
+  flex: 1;
 `
 
 const Preview = styled.div`
@@ -77,18 +78,20 @@ class MarkdownEditor extends PureComponent {
   }
   render() {
     return (
-      <Wrapper>
-        <Editor onChange={this.onEditorChange} value={this.state.source} />
-        <Preview>
-          <ReactMarkdown
-            source={this.state.source}
-            escapeHtml
-            renderers={{
-              code: CodeBlock
-            }}
-          />
-        </Preview>
-      </Wrapper>
+      <div style={{height: '100%', display: 'flex'}}>
+        <Wrapper>
+          <Editor onChange={this.onEditorChange} value={this.state.source} />
+          <Preview>
+            <ReactMarkdown
+              source={this.state.source}
+              escapeHtml
+              renderers={{
+                code: CodeBlock
+              }}
+            />
+          </Preview>
+        </Wrapper>
+      </div>
     )
   }
 }
